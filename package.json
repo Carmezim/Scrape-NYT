@@ -1,0 +1,17 @@
+{
+  "name": "Scrape-NYT",
+  "version": "1.0.0",
+  "description": "Scrape most recent NYT articles",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/Carmezim/Scrape-NYT.git",
+    "type": "git"
+  },
+  "author": "Adriano Carmezim",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "request": "^2.79.0",
+    "underscore": "^1.8.3"
+  }
+}
