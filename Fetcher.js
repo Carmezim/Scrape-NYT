@@ -16,13 +16,13 @@ let articlesLinks = function(callback) {
   request(options, function (err, res, body) {
     console.log('getting urls');
     if (!err && res.statusCode === 200) {
-      var urls = [];
-      var articleContent = [];
-      var articleHeadline, data;
+      let urls = [];
+      let articleContent = [];
+      let articleHeadline, data;
       // Load "body"
-      var $ = cheerio.load(body);
+      let $ = cheerio.load(body);
       // Select element wrapping links
-      var latestNews = $('ol.story-menu');
+      let latestNews = $('ol.story-menu');
       // Fetch links
       console.log('fetching first 6 articles links');
       latestNews.find('li > article > div > a').each(function (index, element) {
@@ -37,10 +37,10 @@ let articlesLinks = function(callback) {
         request({url: url, jar: true}, function (err, res, body) {
           if (err) { return reject(err); }
           // Fetching articles content
-          var $ = cheerio.load(body);
-          var title = $('h1.headline').text();
-          var writer = $('span.byline').text();
-          var content = $('article.story.theme-main');
+          let $ = cheerio.load(body);
+          let title = $('h1.headline').text();
+          let writer = $('span.byline').text();
+          let content = $('article.story.theme-main');
           console.log('getting article content');
           content.find('div > div > p.story-body-text').each(function (index, element) {
             articleContent.push({
@@ -69,7 +69,7 @@ let articlesLinks = function(callback) {
       }
     });
     // Write content to JSON locally
-    var dataJSON = JSON.stringify(data, null, 4);
+    let dataJSON = JSON.stringify(data, null, 4);
     console.log("ARTICLES FETCHED: ", dataJSON);
     fs.writeFile("articles.json", dataJSON, function(err) {
       if(err){
